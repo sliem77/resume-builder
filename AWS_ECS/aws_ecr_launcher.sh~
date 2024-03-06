@@ -1,8 +1,0 @@
-docker build -t IMG_NAME .
-DOCKID=$(docker images -q IMG_NAME)
-aws ecr-public get-login-password --region REGION | docker login --username AWS --password-stdin URI
-docker tag $DOCKID URI
-docker push URI
-aws ecr-public get-login-password --region REGION | docker login --username AWS --password-stdin URI
-docker tag DOCKER_ID URI
-docker push URI

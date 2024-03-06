@@ -1,6 +1,6 @@
 # README
 
-## Prerequistes for everything
+## Prerequisites for everything
 
 ### Step 1: Install pandoc on your computer
 Download [pandoc](https://github.com/jgm/pandoc/releases/tag/3.1.11.1) on your computer.
