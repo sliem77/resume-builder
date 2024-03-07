@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: resumebuilderimg 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resumebuilderimg
+  template:
+    metadata:
+      labels:
+        app: resumebuilderimg 
+    spec:
+      containers:
+        - name: resumebuilderimg 
+          image: builderproj.azurecr.io/resumebuilderimg
+          ports:
+          - containerPort: 8501
