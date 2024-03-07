@@ -1,0 +1,33 @@
+# README
+# Here are the instructions for creating a Pipeline in Azure
+
+## Step 1: Logging into Microsoft Azure Portal
+Visit the [Azure Portal](https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?client_id=8e0e8db5-b713-4e91-98e6-470fed0aa4c2&response_type=code%20id_token&scope=openid%20profile&state=OpenIdConnect.AuthenticationProperties%3DX6HflknqpQ9Rz9BE6WDdPf63zubJhSMbgpQbwMzab6ZGFzkPVsenUtfBphvPpQb79pUTz70aQuRERpTvhJ-qNi96m0HAk14EatmGLLThIq9lj9QHYnuzrVJnRlkK3rVrfb_j4Yo9IkoIUmMHyvecCTpDwV0ZjZx6ZWDezeItq68mCEYvU8_dYmkFYzWxRJXfffPoLGsqk1cwdk8si-_pIEMbG04fQGnwD11S_bsZ0exf2M0hu2lvODBU68bFFmxESGLnF4k30afYhTezNOWAo7NFrB1ka7dZ1di8RVL4rM8xWdNXIW6gZVgAqLdMc3Kyh5AMidWfUC_ikjFV_8l3v4jMCaKqNwtgkA3uzh7CiZDNEo7CR3Hw_aK_MQMlJYg4D3bVHdjU_VbKmyayq93NjgvGNV5FrLMLMBF3YkrLsqQ-Lw2PrPxJiCkOoS5VVjHfKJvO6tGFwcMgHABdZESziRToH-6L-cE8PnIWaa1KbyI&response_mode=form_post&nonce=638453466168436112.MjY2OWM4N2QtY2YxZS00ZWQ5LWEyYWMtOTRjZDRlMWI3NGE2N2FhODMyYTItNzNkNS00ZTg3LWFmYTYtZGViZDNhZWViZThl&redirect_uri=https%3A%2F%2Fsignup.azure.com%2Fapi%2Fuser%2Flogin&max_age=86400&post_logout_redirect_uri=https%3A%2F%2Fsignup.azure.com%2Fsignup%3Foffer%3Dms-azr-0044p%26appId%3D102%26ref%3D%26redirectURL%3Dhttps%3A%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F%26l%3Den-us%26srcurl%3Dhttps%3A%2F%2Fazure.microsoft.com%2Ffree&x-client-SKU=ID_NET472&x-client-ver=6.34.0.0) login site. Once you're there, you can login with your Microsoft Account or GitHub Account. If you don't have an account, [create one](https://signup.live.com/signup?sru=https%3a%2f%2flogin.live.com%2foauth20_authorize.srf%3flc%3d1033%26client_id%3d51483342-085c-4d86-bf88-cf50c7252078%26cobrandid%3d788a943c-8e34-4c0a-9c83-1e4ef0322879%26mkt%3dEN-US%26opid%3d3EA7709F52B70C19%26opidt%3d1709749831%26uaid%3d7bef474f156b4cd78c07e0f554279ac6%26contextid%3d2BAF8C255A9D4A1B%26opignore%3d1&mkt=EN-US&uiflavor=web&lw=1&fl=easi2&cobrandid=788a943c-8e34-4c0a-9c83-1e4ef0322879&client_id=51483342-085c-4d86-bf88-cf50c7252078&uaid=7bef474f156b4cd78c07e0f554279ac6&suc=8e0e8db5-b713-4e91-98e6-470fed0aa4c2&lic=1).
+
+## Step 2: Creating a Resource Group
+Once you are in the Azure Portal, go to the top and click on the search bar and type in resource groups. Click on the first option. Once you're in the Resource groups page, click on the Create button to the left. Make sure to select your Azure Subscription and name your Resource group. After that click on the white Review + create button on the bottom left.
+
+## Step 3: Creating a Container Registry
+Click back on the search bar and type in container registry. Click on the first option. Now that we're in the page, click on the Create button, which is on the left side of the screen. Once again, choose the subscription and resource group. After that, choose a Registry name. Once you have chosen your name, go to the bottom where it says "Pricing plan". Make sure to select Basic. After that, click on the blue Review + create button on the bottom left.
+
+## Step 4: Creating the Kubernetes Cluster
+Click back on the search bar and type in Kubernetes. Choose the first option. Click on the Create button on the left side of the screen. Once again, select the subscription and resource group. Below that is Cluster preset configuration. Make sure to choose Dev/Test. After that, choose a cluster name for your cluster. In availability zones, make sure to choose all 3. After that, go to AKS pricing tier, which is 3 rows below the cluster name, and choose Free. Now click on the Review + create button on the bottom of the screen.
+
+## Step 5: Logging into Azure DevOps
+Visit the [Azure DevOps](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj02qWXn-CEAxVZ4ckDHf4cA4gQFnoECBEQAQ&url=https%3A%2F%2Faex.dev.azure.com%2F&usg=AOvVaw2AXOivxL9pU4DLElYv2Tjc&opi=89978449) login site. Once you're there, you can login with your Microsoft Account or GitHub Account that you used for the Azure Portal.
+
+## Step 6: Create a Project
+Once you're on the website, click on the blue "New project" button. After that, choose a project name, enter in a description(optional), and choose the public visibility.
+
+## Step 7: Import the GitHub Repository
+Now that the project has been created, look on the left hand side and choose Repos, which has an orange symbol next to it. When you're in Repos, there will be a section called "Import a repository". Click the import button. Input this Clone Url: https://github.com/sliem77/resume-builder . The Repository Information is now inside of your Project.
+
+## Step 8: Requesting Parallel Jobs
+Visit the [Azure DevOps Parallelism](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR5zsR558741CrNi6q8iTpANURUhKMVA3WE4wMFhHRExTVlpET1BEMlZSTCQlQCN0PWcu) page and submit a request for more jobs. **THIS IS VERY IMPORTANT, WITHOUT THIS YOU WILL NOT BE ABLE TO CREATE THE PIPELINE**. Fill out the information asked in the form. Once you have submitted the form, you will have to wait for 2-3 business days to continue, Microsoft first has to accept your request. Check your email frequently until you get it.
+
+## Step 9: Creating the Pipeline
+Now that you have access to Parallel Jobs, go back to [Azure DevOps](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj02qWXn-CEAxVZ4ckDHf4cA4gQFnoECBEQAQ&url=https%3A%2F%2Faex.dev.azure.com%2F&usg=AOvVaw2AXOivxL9pU4DLElYv2Tjc&opi=89978449). Click on your project and look on the left hand side of the screen and choose Pipelines. Pipelines has a blue spaceship symbol. When you're in Pipelines, click on the blue "Create Pipeline" button. Choose the first option "Azure Repos Git". You will be led to a "Select a repository", make sure to click the first option. When you are in the "Configure" stage, choose the third option "Deploy to Azure Kubernetes Service". A new tab on the right will open up asking to Select an Azure subscription. Choose the first option and hit the blue Continue button on the bottom right. A new authentication page will open up and, once again, log in with your credentials. Now the tab will show new info on the right screen. In the first dropdown box, choose the Cluster that you made earlier.
+
+# *INCOMPLETE FOR NAMESPACE PART***
+
+After that, for Container registry, click on the dropdown box and select your registry. Once you selected your registry name, you can choose a name for your Image. There's already a name provided for you, if you don't like it choose another one. After that, click on "Validate and configure". Now you will be redirected to a new page filled with
