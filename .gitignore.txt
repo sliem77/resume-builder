@@ -1,0 +1,7 @@
+# Ignore config.py
+config.py
+
+# Ignore all YAML files
+*.yaml
+*.yml
+.DS_Store
