@@ -16,6 +16,8 @@ variables:
   dockerfilePath: 'Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'builderproj203657ba-auth'
+  acrUsername: builderproj
+  acrPassword: eASfUQ22/TkQ0Y6xvcH8Kvu12lMky8Sdivw8+WLRxM+ACRBQpkBm
 
 stages:
 - stage: Build
@@ -27,7 +29,7 @@ stages:
       name: new-agent-pool
     steps:
     - script: |
-        echo "Dockerfile path: $(Build.SourcesDirectory)/$(dockerfilePath)"
+        docker login -u $(acrUsername) -p $(acrPassword) $(containerRegistry)
         docker build -t $(containerRegistry)/$(imageRepository):$(tag) -f $(dockerfilePath) .
         docker push $(containerRegistry)/$(imageRepository):$(tag)
         docker push $(containerRegistry)/$(imageRepository):latest
