@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'add7ab35-4a33-4d0a-b81f-3f5926bf28d7'
   imageRepository: 'sliemresumebuilder'
   containerRegistry: 'builderproj.azurecr.io'
-  dockerfilePath: '/Azure_Pipeline/Dockerfile'
+  dockerfilePath: 'Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'builderproj203657ba-auth'
 
@@ -27,10 +27,11 @@ stages:
       name: new-agent-pool
     steps:
     - script: |
+        echo "Dockerfile path: $(Build.SourcesDirectory)/$(dockerfilePath)"
         docker build -t $(containerRegistry)/$(imageRepository):$(tag) -f $(dockerfilePath) .
         docker push $(containerRegistry)/$(imageRepository):$(tag)
+        docker push $(containerRegistry)/$(imageRepository):latest
       displayName: 'Build and push an image to Azure Container Registry'
-
     - upload: manifests
       artifact: manifests
 
