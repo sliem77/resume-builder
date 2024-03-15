@@ -13,11 +13,9 @@ variables:
   dockerRegistryServiceConnection: 'add7ab35-4a33-4d0a-b81f-3f5926bf28d7'
   imageRepository: 'sliemresumebuilder'
   containerRegistry: 'builderproj.azurecr.io'
-  dockerfilePath: 'Dockerfile'
+  dockerfilePath: ‘/Azure_Pipeline/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'builderproj203657ba-auth'
-  acrUsername: builderproj
-  acrPassword: eASfUQ22/TkQ0Y6xvcH8Kvu12lMky8Sdivw8+WLRxM+ACRBQpkBm
 
 stages:
 - stage: Build
@@ -29,10 +27,8 @@ stages:
       name: new-agent-pool
     steps:
     - script: |
-        docker login -u $(acrUsername) -p $(acrPassword) $(containerRegistry)
         docker build -t $(containerRegistry)/$(imageRepository):$(tag) -f $(dockerfilePath) .
         docker push $(containerRegistry)/$(imageRepository):$(tag)
-#        docker push $(containerRegistry)/$(imageRepository):latest
       displayName: 'Build and push an image to Azure Container Registry'
 
     - upload: manifests
@@ -62,7 +58,6 @@ stages:
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
-              namespace: test
               manifests: |
                 $(Pipeline.Workspace)/manifests/deployment.yml
                 $(Pipeline.Workspace)/manifests/service.yml
