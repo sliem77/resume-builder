@@ -1,0 +1,32 @@
+# Deploy to Azure Kubernetes Service
+# Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+resources:
+- repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: 'add7ab35-4a33-4d0a-b81f-3f5926bf28d7'
+  imageRepository: 'resumebuilderimg'
+  containerRegistry: 'builderproj.azurecr.io'
+  dockerfilePath: '/Azure_Pipeline/Dockerfile'
+  tag: '$(Build.BuildId)'
+  imagePullSecret: 'builderproj203657ba-auth'
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: new-agent-pool
+    steps:
+    - script: |
+        docker build -t $(containerRegistry)/$(imageRepository):$(tag) -f $(dockerfilePath) .
+        docker push $(containerRegistry)/$(imageRepository):$(tag)
+      displayName: 'Build and push an image to Azure Container Registry'
