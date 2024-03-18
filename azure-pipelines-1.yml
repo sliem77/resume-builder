@@ -25,6 +25,7 @@ stages:
       name: new-agent-pool
     steps:
     - script: |
+        ls
         docker build -t $(containerRegistry)/$(imageRepository):$(tag) -f $(dockerfilePath) .
         docker run -e API_KEY=$(API_KEY) $(containerRegistry)/$(imageRepository):$(tag)
         docker push $(containerRegistry)/$(imageRepository):$(tag)
