@@ -1,4 +1,3 @@
-from config import *
 from imgs import *
 from streamlit_image_select import image_select
 from pdf2image import convert_from_path
