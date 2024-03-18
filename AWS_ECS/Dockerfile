@@ -56,10 +56,10 @@ RUN apt-get update && \
         poppler-utils
 
 # Expose the port
-EXPOSE 8501
+EXPOSE 8000
 
 # Checking container is working
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+HEALTHCHECK CMD curl --fail http://localhost:8000/_stcore/health
 
 # Run the application
-ENTRYPOINT ["streamlit", "run", "AWS_v1.py", "--server.port=8501", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "AWS_v1.py", "--server.port=8000", "--server.address=0.0.0.0"]

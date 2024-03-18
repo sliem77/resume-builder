@@ -12,7 +12,7 @@ import shutil
 from PyPDF2 import PdfReader
 from docx import Document
 import json
-openai.api_key = api_key
+api_key = os.environ.get('API_KEY')
 
 st.title('Welcome to the Résumé Builder!')
 tPaths = [t1, t2, t3]
