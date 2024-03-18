@@ -2,7 +2,7 @@
 
 # Choose the Python version and OS image for your base image
 ARG PYTHON_VERSION=3.9.18
-FROM amd64/python:${PYTHON_VERSION}-slim-bookworm as base
+FROM python:${PYTHON_VERSION}-slim-bookworm as base
 
 # Prevents Python from writing pyc files.
 ENV PYTHONDONTWRITEBYTECODE=1
