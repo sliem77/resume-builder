@@ -1,0 +1,39 @@
+# Docker Build and Push
+# Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+resources:
+- repo: self
+
+variables:
+  azureSubscription: 'az_sub'
+  appName: 'autorb'
+  dockerRegistryServiceConnection: 'add7ab35-4a33-4d0a-b81f-3f5926bf28d7'
+  imageRepository: 'sliemresumebuilder'
+  containerRegistry: 'builderproj.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/AWS_ECS/Dockerfile'
+  tag: 'latest'
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: new-agent-pool
+    steps:
+    - script: |
+        docker build -t $(containerRegistry)/$(imageRepository):$(tag) -f $(dockerfilePath) .
+        docker push $(containerRegistry)/$(imageRepository):$(tag)
+      displayName: 'Build and push an image to Azure Container Registry'
+
+    - task: AzureWebAppContainer@1
+      displayName: 'Deploying Web App'
+      inputs:
+        azureSubscription: $(azureSubscription)
+        appName: $(appName)
+        containers: $(containerRegistry)/$(imageRepository):$(tag)
