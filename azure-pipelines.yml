@@ -26,9 +26,8 @@ stages:
     steps:
     - script: |
         cd $(Build.SourcesDirectory)/Azure_Pipeline
-        pwd
         cat Dockerfile
         docker build -t $(containerRegistry)/$(imageRepository):$(tag) -f $(dockerfilePath) .
-        docker run -e API_KEY=$(API_KEY) $(containerRegistry)/$(imageRepository):$(tag)
         docker push $(containerRegistry)/$(imageRepository):$(tag)
       displayName: 'Build and push an image to Azure Container Registry'
+# docker run -e API_KEY=$(API_KEY) $(containerRegistry)/$(imageRepository):$(tag)
