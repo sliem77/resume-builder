@@ -12,7 +12,7 @@ variables:
   dockerRegistryServiceConnection: '3000a247-b2aa-4e4a-82e9-8688597064ef'
   imageRepository: 'sliemresumebuilder'
   containerRegistry: 'builderproj.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/AWS_ECS/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)/Azure-Pipeline/Dockerfile'
   tag: 'latest'
 
 stages:
