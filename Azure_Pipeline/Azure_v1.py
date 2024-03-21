@@ -2,6 +2,7 @@ from imgs import *
 from streamlit_image_select import image_select
 from pdf2image import convert_from_path
 from pdf2docx import Converter
+from dotenv import load_dotenv
 import streamlit as st
 import openai
 import subprocess
