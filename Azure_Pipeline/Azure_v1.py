@@ -15,6 +15,8 @@ from docx import Document
 import json
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
+load_dotenv()
+
 st.title('Welcome to the Résumé Builder!')
 tPaths = [t1, t2, t3]
 x = 0
