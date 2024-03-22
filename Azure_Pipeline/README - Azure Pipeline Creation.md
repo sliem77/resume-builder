@@ -10,22 +10,53 @@ Once you are in the Azure Portal, go to the top and click on the search bar and 
 ## Step 3: Creating a Container Registry
 Click back on the search bar and type in container registry. Click on the first option. Now that we're in the page, click on the Create button, which is on the left side of the screen. Once again, choose the subscription and resource group. After that, choose a Registry name. Once you have chosen your name, go to the bottom where it says "Pricing plan". Make sure to select Basic. After that, click on the blue Review + create button on the bottom left.
 
+Once it's created, click on it and you should be in a new screen. Underneath Essentials on the middle of the page, copy the subscription ID and save it somewhere. Do the same with the login server name which is located to the right of the screen. This will be important for later.
+
 ## Step 4: Logging into Azure DevOps
 Visit the [Azure DevOps](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj02qWXn-CEAxVZ4ckDHf4cA4gQFnoECBEQAQ&url=https%3A%2F%2Faex.dev.azure.com%2F&usg=AOvVaw2AXOivxL9pU4DLElYv2Tjc&opi=89978449) login site. Once you're there, you can login with your Microsoft Account or GitHub Account that you used for the Azure Portal. After that, click on "Create new organization". It will lead you to a new tab. On there, you can rename your organization if you choose to. After that make sure that the projects are hosted in the United States. After that, enter in the characters and click on the blue "Continue" button.
 
 ## Step 5: Create a Project
-Once you're on the website, enter in a name for the project. After that, choose a project name and choose the public visibility. Click on the blue "Create project" button. 
+Once you're on the website, first copy your link on the top, you will need it for later. After that, enter in a name for the project. After that, choose a project name and choose the public visibility. Click on the blue "Create project" button. 
 
 If you public is not avaiable click on the link below that that has "organization policies" underlined in blue. Go click on the Allow public projects and make sure its on. A prompt will pop up and choose the save button. Click on the Azure DevOps on the top left of the screen. Recreate the project from the information above.
 
 ## Step 6: Import the GitHub Repository
-Now that the project has been created, look on the left hand side and choose Repos, which has an orange symbol next to it. When you're in Repos, there will be a section called "Import a repository". Click the import button. Input this Clone Url: https://github.com/sliem77/resume-builder . The Repository Information is now inside of your Project.
+Now that the project has been created, look on the left hand side and choose Repos, which has an orange symbol next to it. When you're in Repos, there will be a section called "Import a repository". Click the import button. Input this Clone Url: https://github.com/sliem77/resume-builder . Click on import. The Repository Information is now inside of your Project.
 
 ## Step 7: Creating an Agent Pool
-This part is extremely important and vital for the project to even work, so please do not skip this step. On the bottom of the screen, you should see project settings, which has a gear to the left of it. Click on that. It will now lead you to a new page. Scroll down to see the pipeline section and click on the first option called "Agent Pool". Once you're in the agent pool section click on the blue "Add pool" button to the right of the screen. A new tab will pop up that says "Agent Pool." Click on the "Pool type" drop-down box. Click on the "Self hosted" option and choose a name for it. After that, make sure to check the box that says grant access permission to all pipelines. After this, click on the "Create" button on the bottom of the screen.
+This part is extremely important and vital for the project to even work, so please do not skip this step. 
+
+Before starting, make sure your click on the person gear icon to the left your your profile pic in the top right. Click on it. Click on the option "Personal access tokens". Click the blue button that says "New token". Choose any name for it. In the scopes tab, select Full access. Click on the blue "Create" button on the bottom. You will be led to a new prompt, make sure to copy and paste that somewhere, you will need it.
+
+On the bottom of the screen, you should see project settings, which has a gear to the left of it. Click on that. It will now lead you to a new page. Scroll down to see the pipelines section and click on the first option called "Agent Pool". Once you're in the agent pool section click on the blue "Add pool" button to the right of the screen. A new tab will pop up that says "Agent Pool." Click on the "Pool type" drop-down box. Click on the "Self hosted" option and name it "new-agent-pool". After that, make sure to check the box that says grant access permission to all pipelines. After this, click on the "Create" button on the bottom of the screen. After this, go back into Agent pools and click on the new agent pool that was just created. To the right, there should be a "New agent" button. Click on that. A prompt will pop up. Click on the "Download" button. Open up your Terminal (Mac) or Command Prompt (Windows). cd into your Downloads folder. After that, follow the instructions that are below the Download button.
+
+For Windows users, copy and paste everything after the ">" symbol.
+
+For Mac and Linux Users, copy and pasted everything after "$" symbol.
+
+When running ./config.sh or ./config.cmd, Terminal/Command Prompt will ask for the server url. Paste in the link mentioned in Step 5. After that, for "Authentication type" hit enter. "Personal access token" will appear, paste in the code that you copied earlier. Hit enter. "New agent pool" shows up, make sure to type in "new-agent-pool". Hit enter. A new line will appear, hit enter once again. After that, a "_work" folder will appear, hit enter. The next line asks for yes or no, type in Y. Hit enter. Hit enter again for the next line.
+
+If you get any error, just ignore it and run the script, either .\run.cmd for Windows or .\run.sh for Mac.
+
+Make sure that Terminal/Command Prompt is open. You may close it after you are done with the resume builder
+
+## Step 7.1: IMPORTANT FOR MAC USERS ONLY
+
+You will most likely run into the issue of "“Agent.Listener” can’t be opened because Apple cannot check it for malicious software." To solve this, type in the following commands:
+
+sudo spctl --master-disable
+
+echo Disabled Protections
+### MAKE SURE TO RUN THIS SCRIPT AFTER YOU ARE DONE WITH RUNNING THE PROGRAM IN TERMINAL:
+sudo spctl --master-enable
+
+echo Enabled Protections
+### DO NOT FORGET THIS STEP!
 
 ## Step 8: Creating the Pipeline
-Click on your project and look on the left hand side of the screen and choose Pipelines. Pipelines has a blue spaceship symbol. When you're in Pipelines, click on the blue "Create Pipeline" button. Choose the first option "Azure Repos Git". You will be led to a "Select a repository", make sure to click the first option. When you are in the "Configure" stage, choose the option "Existing Azure Pipelines YAML file". Once you're there, choose the path that says azure-pipelines.yml. Click on the continue button at the bottom right corner. Click on the "Variables" button which is to the left of the blue "Run" button. Click on "New variable". For the name, type in "OPENAI_API_KEY". For the value, type in your OpenAI API Key and MAKE SURE THAT YOU CHECKED THE BOX "Keep this value secret". THIS IS VERY IMPORTANT, SO MAKE SURE ITS DONE. If you don't have one, please refer to the "README - Using the Résumé Builder.md" file. After this, click on the "OK" button on the bottom right. After that, hit the "Run" button. You will be led to a new page where everything is running. Wait for the everything under "Build stage" to have a check on the left side to it.
+Before starting, open up Docker and make sure it's open.
+
+After that, click on your project and look on the left hand side of the screen and choose Pipelines. Pipelines has a blue spaceship symbol. When you're in Pipelines, click on the blue "Create Pipeline" button. Choose the first option "Azure Repos Git". You will be led to a "Select a repository", make sure to click the first option. When you are in the "Configure" stage, choose the option "Existing Azure Pipelines YAML file". Once you're there, choose the path that says azure-pipelines.yml. When you get to the code, replace the "dockerRegistryServiceConnection" on line 12 with the subscription ID you copied from step 3. Along with that, copy and paste the login server from before and replace the value on line 14. After that, click on the "Variables" button which is to the left of the blue "Run" button. Click on "New variable". For the name, type in "OPENAI_API_KEY". For the value, type in your OpenAI API Key and MAKE SURE THAT YOU CHECKED THE BOX "Keep this value secret". THIS IS VERY IMPORTANT, SO MAKE SURE ITS DONE. If you don't have one, please refer to the "README - Using the Résumé Builder.md" file. After this, click on the "OK" button on the bottom right. If a resource authorization appears, click on the Resource Authorized button to the right of it. After that, hit the "Run" button. You will be led to a new page where everything is running. If you aren't led anywhere, underneath Jobs, click on the "build" that has a blue symbol on the left of it. Wait for the everything under "Build stage" to have a check on the left side to it.
 
 ## Step 9: Hosting the Azure Website
 Go back to the Azure Portal and click on the "Search" Button to the top of the screen. Type in App Services and click on the first one. Now you are on the App Services page, click on the "+ Create" button to the left of the screen underneath the "App Services" title. Click on the first option that says "+ Web App". Make sure for resource group click on the blue "Create new" button. Choose a name for the resource group and click on "OK" right underneath it. After that, choose a name for your web app. Underneath that shows publish make sure to click on "Docker container". After that, click on the Docker tab right next to database on the top of the screen right below the "Create Web App" title. Click on the image source drop-down box and make sure to choose "Azure Container Registry". Below that, select the registry, image, and tag boxes below the "Azure container registry options". Click on the blue "Review + create" button on the bottom of the screen. After that so once again for "App services", Wait for a few minutes and then hit the refresh button right next to manage view. After that, your website should pop up. Click on it, and copy your website, which is shown underneath default domain. Your web services should look like this: *APPNAME*.azurewebsites.net. Paste it into a new tab and wait for a few minutes for the résumé builder to launch. Once it has been launched, you're good to go!
