@@ -11,10 +11,12 @@ Once you are in the Azure Portal, go to the top and click on the search bar and 
 Click back on the search bar and type in container registry. Click on the first option. Now that we're in the page, click on the Create button, which is on the left side of the screen. Once again, choose the subscription and resource group. After that, choose a Registry name. Once you have chosen your name, go to the bottom where it says "Pricing plan". Make sure to select Basic. After that, click on the blue Review + create button on the bottom left.
 
 ## Step 4: Logging into Azure DevOps
-Visit the [Azure DevOps](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj02qWXn-CEAxVZ4ckDHf4cA4gQFnoECBEQAQ&url=https%3A%2F%2Faex.dev.azure.com%2F&usg=AOvVaw2AXOivxL9pU4DLElYv2Tjc&opi=89978449) login site. Once you're there, you can login with your Microsoft Account or GitHub Account that you used for the Azure Portal.
+Visit the [Azure DevOps](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj02qWXn-CEAxVZ4ckDHf4cA4gQFnoECBEQAQ&url=https%3A%2F%2Faex.dev.azure.com%2F&usg=AOvVaw2AXOivxL9pU4DLElYv2Tjc&opi=89978449) login site. Once you're there, you can login with your Microsoft Account or GitHub Account that you used for the Azure Portal. After that, click on "Create new organization". It will lead you to a new tab. On there, you can rename your organization if you choose to. After that make sure that the projects are hosted in the United States. After that, enter in the characters and click on the blue "Continue" button.
 
 ## Step 5: Create a Project
-Once you're on the website, click on the blue "New project" button. After that, choose a project name, enter in a description(optional), and choose the public visibility.
+Once you're on the website, enter in a name for the project. After that, choose a project name and choose the public visibility. Click on the blue "Create project" button. 
+
+If you public is not avaiable click on the link below that that has "organization policies" underlined in blue. Go click on the Allow public projects and make sure its on. A prompt will pop up and choose the save button. Click on the Azure DevOps on the top left of the screen. Recreate the project from the information above.
 
 ## Step 6: Import the GitHub Repository
 Now that the project has been created, look on the left hand side and choose Repos, which has an orange symbol next to it. When you're in Repos, there will be a section called "Import a repository". Click the import button. Input this Clone Url: https://github.com/sliem77/resume-builder . The Repository Information is now inside of your Project.
